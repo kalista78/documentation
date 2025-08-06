@@ -1,68 +1,87 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Zyper",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#7B61FF",
+    "light": "#9B81FF",
+    "dark": "#5B41DF"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Getting Started",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Welcome",
             "pages": [
               "index",
               "quickstart",
-              "development"
+              "how-it-works"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Create & Earn",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "create/launch-token",
+              "create/twitter-bot",
+              "create/farcaster-bot",
+              "create/web-app"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Make Money",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "earn/creator-fees",
+              "earn/trading-fees",
+              "earn/points-system",
+              "earn/referrals",
+              "earn/leaderboard"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "Token Trading",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Trading Basics",
             "pages": [
-              "api-reference/introduction"
+              "trading/getting-started",
+              "trading/hyperswap",
+              "trading/liquidity",
+              "trading/fees"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Strategies",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "strategies/early-bird",
+              "strategies/volume-trading",
+              "strategies/token-sniping",
+              "strategies/risk-management"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Community",
+        "groups": [
+          {
+            "group": "Join Us",
+            "pages": [
+              "community/twitter",
+              "community/telegram"
+            ]
+          },
+          {
+            "group": "Resources",
+            "pages": [
+              "resources/faq",
+              "resources/glossary",
+              "resources/tutorials",
+              "resources/support"
             ]
           }
         ]
@@ -71,19 +90,19 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Launch App",
+          "href": "https://zyper.xyz",
+          "icon": "rocket"
         },
         {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
+          "anchor": "Twitter",
+          "href": "https://x.com/Zyperbot",
+          "icon": "x-twitter"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Farcaster",
+          "href": "http://farcaster.xyz/zyperbot",
+          "icon": "message"
         }
       ]
     }
@@ -96,32 +115,25 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "https://t.me/zyperhub"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Launch App",
+      "href": "https://zyper.fun"
     }
   },
   "contextual": {
     "options": [
      "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
+     "view"
    ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/Zyperbot",
+      "telegram": "https://t.me/zyperhub"
     }
   }
 }

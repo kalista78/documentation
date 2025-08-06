@@ -1,80 +1,330 @@
 ---
-title: "Quickstart"
-description: "Start building awesome documentation in minutes"
+title: "Quick Start Guide"
+description: "Launch your first token and start earning in 5 minutes"
 ---
 
-## Get started in three steps
+## Before You Start
 
-Get your documentation site running locally and make your first customization.
+You'll need:
+- **A Farcaster, Twitter, or wallet account** to sign in
+- **An idea** for your token
+- That's it! No gas fees required - Zyper handles deployment for you
 
-### Step 1: Set up your local environment
+<Warning>
+  **Creation Limit**: You can create up to 2 tokens per platform every 24 hours.
+</Warning>
 
-<AccordionGroup>
-  <Accordion icon="copy" title="Clone your docs locally">
-    During the onboarding process, you created a GitHub repository with your docs content if you didn't already have one. You can find a link to this repository in your [dashboard](https://dashboard.mintlify.com).
+## Choose How to Launch
+
+<Tabs>
+  <Tab title="💬 Farcaster (Easiest)">
+    ## Launch with Farcaster Mini App
     
-    To clone the repository locally so that you can make and preview changes to your docs, follow the [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) guide in the GitHub docs.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Start the preview server">
-    1. Install the Mintlify CLI: `npm i -g mint`
-    2. Navigate to your docs directory and run: `mint dev`
-    3. Open `http://localhost:3000` to see your docs live!
+    ### 1️⃣ Open Farcaster
+    Open Farcaster on your device
     
-    <Tip>Your preview updates automatically as you edit files.</Tip>
-  </Accordion>
-</AccordionGroup>
-
-### Step 2: Deploy your changes
-
-<AccordionGroup>
-  <Accordion icon="github" title="Install our GitHub app">
-    Install the Mintlify GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
+    ### 2️⃣ Find Zyper Mini App
     
-    Our GitHub app automatically deploys your changes to your docs site, so you don't need to manage deployments yourself.
-</Accordion>
-<Accordion icon="palette" title="Update your site name and colors">
-    For a first change, let's update the name and colors of your docs site.
+    Look for the Zyper mini app in Farcaster
+    
+    ### 3️⃣ Create Your Token
+    
+    Fill in the details:
+    - Token name
+    - Symbol
+    - Image
+    - Description (optional)
+    
+    ### 4️⃣ Launch!
+    
+    Confirm the transaction and your token is live!
+    
+    **Why Farcaster is easiest:**
+    - Integrated wallet connection
+    - Simple UI within Farcaster
+    - One-click deployment
+    - Instant sharing with Farcaster community
+    
+    <Info>
+      **Pro Tip**: Farcaster users are early adopters who love new tokens. Launch here for instant community engagement!
+    </Info>
+  </Tab>
+  
+  <Tab title="🐦 Twitter">
+    ## Launch with a Tweet
+    
+    ### 1️⃣ Follow @zyperbot
+    Make sure you're following [@zyperbot](https://twitter.com/zyperbot) on Twitter
+    
+    ### 2️⃣ Tweet Your Token
+    
+    Send a tweet mentioning @zyperbot:
+    
+    ```
+    @zyperbot launch "Rocket Moon" $ROCKET
+    logo: https://i.imgur.com/yourimagehere.png
+    ```
+    
+    **Pro Tips:**
+    - Use a catchy name and symbol
+    - Add a logo URL (imgur, ipfs, or any image host)
+    - Optional: Add website, telegram, description
+    
+    ### 3️⃣ Wait for Magic
+    
+    Within 30 seconds, Zyperbot will reply with:
+    - ✅ Your token address
+    - 📈 Link to trade on Hyperswap
+    - 💰 Your creator dashboard link
+    
+    ### 4️⃣ Start Earning!
+    
+    That's it! You now earn 0.5% from every trade. Share your token with friends and watch the fees roll in.
+    
+    <Card title="Example Tweet" icon="twitter">
+      @zyperbot create "Diamond Hands" $DIAMOND  
+      logo: https://i.imgur.com/abc123.png  
+      website: diamondhands.xyz  
+      telegram: t.me/diamondhandschat  
+      description: The strongest hands in crypto! 💎👐
+    </Card>
+  </Tab>
+  
+  <Tab title="🌐 Web App">
+    ## Launch via Zyper.xyz
+    
+    ### 1️⃣ Sign In with Privy
+    
+    1. Go to [zyper.fun](https://zyper.fun)
+    2. Click "Sign In"
+    3. Choose your method:
+       - **Farcaster** (recommended)
+       - **Twitter**  
+       - **External wallet** (MetaMask, etc.)
+    
+    ### 2️⃣ Fill in Token Details
+    
+    **Required:**
+    - **Token Name**: Be creative! (e.g., "Moon Rocket")
+    - **Symbol**: 3-10 characters (e.g., "MOON")
+    
+    **Optional but Recommended:**
+    - **Logo**: Upload or paste image URL
+    - Website URL
+    - Twitter handle
+    - Telegram group
+    - Description (sell your vision!)
+    
+    ### 3️⃣ Launch Token
+    
+    1. Review your token details
+    2. Click "Launch Token"
+    3. Wait for confirmation (no gas fees - we deploy for you!)
+    
+    ### 4️⃣ Share Your Success
+    
+    Once deployed, you'll get:
+    - Share buttons for Twitter/Telegram
+    - Your token page URL
+    - Trading chart
+    - Real-time fee tracker
+    
+    <Info>
+      **Tip**: Tokens with good logos and descriptions get 3x more trades!
+    </Info>
+  </Tab>
+</Tabs>
 
-    1. Open `docs.json` in your editor.
-    2. Change the `"name"` field to your project name.
-    3. Update the `"colors"` to match your brand.
-    4. Save and see your changes instantly at `http://localhost:3000`.
+## Your Dashboard at zyper.fun
 
-    <Tip>Try changing the primary color to see an immediate difference!</Tip>
-  </Accordion>
-</AccordionGroup>
+<Info>
+  **Manage Everything**: Sign in at [zyper.fun](https://zyper.fun) to access your complete dashboard
+</Info>
 
-### Step 3: Go live
-
-<Accordion icon="rocket" title="Publish your docs">
-  1. Commit and push your changes.
-  2. Your docs will update and be live in moments!
-</Accordion>
-
-## Next steps
-
-Now that you have your docs running, explore these key features:
+### Dashboard Features
 
 <CardGroup cols={2}>
-
-<Card title="Write Content" icon="pen-to-square" href="/essentials/markdown">
-  Learn MDX syntax and start writing your documentation.
-</Card>
-
-<Card title="Customize style" icon="palette" href="/essentials/settings">
-  Make your docs match your brand perfectly.
-</Card>
-
-<Card title="Add code examples" icon="square-code" href="/essentials/code">
-  Include syntax-highlighted code blocks.
-</Card>
-
-<Card title="API documentation" icon="code" href="/api-reference/introduction">
-  Auto-generate API docs from OpenAPI specs.
-</Card>
-
+  <Card title="My Tokens" icon="coins">
+    - View all tokens you've created
+    - Track performance and volume
+    - See real-time statistics
+  </Card>
+  
+  <Card title="Fee Management" icon="money-bill">
+    - Check accumulated fees
+    - Update fee recipient address
+    - Collect fees with one click
+  </Card>
+  
+  <Card title="Trading" icon="chart-line">
+    - Buy and sell tokens directly
+    - View live price charts
+    - Access order history
+  </Card>
+  
+  <Card title="Points Tracking" icon="trophy">
+    - Monitor your points balance
+    - See earning breakdown
+    - Track your ranking
+  </Card>
 </CardGroup>
 
-<Note>
-  **Need help?** See our [full documentation](https://mintlify.com/docs) or join our [community](https://mintlify.com/community).
-</Note>
+### Where to Trade
+
+You have multiple options for trading:
+- **zyper.fun**: Trade directly on our platform
+- **Hyperswap V3**: Use the DEX directly
+- **Any Aggregator**: Use your preferred DEX aggregator
+
+## After Launch: Maximize Your Earnings
+
+<Steps>
+  <Step title="Share Everywhere">
+    - Tweet about your token
+    - Share in Telegram groups
+    - Post in Farcaster
+    - Tell your friends
+  </Step>
+  
+  <Step title="Build Community">
+    - Create a Telegram group
+    - Start a Twitter account
+    - Engage with holders
+    - Share updates regularly
+  </Step>
+  
+  <Step title="Track Your Earnings">
+    Visit your creator dashboard to see:
+    - Total fees earned (in WHYPE)
+    - 24h volume
+    - Number of holders
+    - Price charts
+  </Step>
+  
+  <Step title="Collect Fees">
+    - Fees accumulate automatically
+    - Claim anytime from dashboard
+    - No minimum withdrawal
+    - Instant to your wallet
+  </Step>
+</Steps>
+
+## Understanding Your Earnings
+
+Every token on Zyper has a **1% trading fee**:
+- **0.5% goes to YOU** (the creator)
+- **0.5% goes to Zyper** (platform fee)
+
+### Real Examples (in HYPE)
+
+| If someone trades... | Platform gets | YOU get |
+|---------------------|---------------|---------|
+| 100 HYPE | 0.5 HYPE | **0.5 HYPE** |
+| 1,000 HYPE | 5 HYPE | **5 HYPE** |
+| 10,000 HYPE | 50 HYPE | **50 HYPE** |
+| 100,000 HYPE | 500 HYPE | **500 HYPE** |
+
+## Points System
+
+### Earn Points Two Ways:
+
+- **As a Creator**: Get **400 points** for every 1 WHYPE you collect in fees
+- **As a Trader**: Get **1 point** for every 1 WHYPE trading volume
+
+Example: If you collect 10 WHYPE in fees today, you earn 4,000 points!
+
+## Pro Tips for Success
+
+<AccordionGroup>
+  <Accordion title="🎨 Make It Memorable">
+    - Choose a catchy, easy-to-remember name
+    - Pick a symbol that's not taken
+    - Use a high-quality logo (AI-generated works great!)
+    - Write a compelling description
+  </Accordion>
+  
+  <Accordion title="📢 Marketing Matters">
+    - Tweet about your token immediately after launch
+    - Create a Telegram group before launching
+    - Post in Farcaster communities
+    - Reach out to crypto influencers
+  </Accordion>
+  
+  <Accordion title="🤝 Engage Your Holders">
+    - Be active in your Telegram
+    - Share updates and milestones
+    - Celebrate price increases
+    - Thank your community regularly
+  </Accordion>
+  
+  <Accordion title="⏰ Timing Is Key">
+    - Launch when crypto Twitter is active
+    - Avoid launching during major events
+    - Weekend evenings often see more activity
+    - Gas is always low on HyperEVM!
+  </Accordion>
+</AccordionGroup>
+
+## Common Questions
+
+<AccordionGroup>
+  <Accordion title="How much does it cost to launch?">
+    FREE! No gas fees required. Zyper deploys tokens from our wallets. The 500 HYPE initial liquidity is provided by the protocol.
+  </Accordion>
+  
+  <Accordion title="Can I launch multiple tokens?">
+    Yes! You can launch up to 2 tokens per platform every 24 hours. Each earns fees independently.
+  </Accordion>
+  
+  <Accordion title="When do I get paid?">
+    Fees accumulate in real-time in WHYPE. You can claim them anytime from your dashboard.
+  </Accordion>
+  
+  <Accordion title="Is the liquidity really locked forever?">
+    Yes! 100% of initial liquidity is permanently locked. No rug pulls possible.
+  </Accordion>
+  
+  <Accordion title="What if my token doesn't get trades?">
+    No worries! There's no cost to you. Try launching another with better marketing (remember the 2 per day limit).
+  </Accordion>
+</AccordionGroup>
+
+## Ready to Launch?
+
+You're just one click away from passive income!
+
+<CardGroup cols={2}>
+  <Card
+    title="💬 Launch on Farcaster"
+    href="https://warpcast.com/zyper"
+    color="#8A63D2"
+  >
+    Use the mini app for easiest launch
+  </Card>
+  <Card
+    title="🚀 Launch on Web"
+    href="https://zyper.fun"
+    color="#7B61FF"
+  >
+    Use the web app interface
+  </Card>
+</CardGroup>
+
+## Need Help?
+
+<CardGroup cols={2}>
+  <Card
+    title="Telegram"
+    icon="telegram"
+    href="https://t.me/zyperhub"
+  >
+    Get instant help from our community
+  </Card>
+  <Card
+    title="FAQ"
+    icon="question"
+    href="/resources/faq"
+  >
+    Find answers to common questions
+  </Card>
+</CardGroup>

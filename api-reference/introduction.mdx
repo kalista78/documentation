@@ -1,33 +1,378 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: "API Introduction"
+description: "Complete reference for the Zyper REST API"
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+## Overview
 
-## Welcome
+The Zyper API provides programmatic access to token deployment, trading data, fee collection, and user analytics. Built on REST principles, our API uses standard HTTP response codes, authentication, and returns JSON responses.
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+## Base URL
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+<CodeGroup>
+```bash Production
+https://api.zyper.xyz
+```
+
+```bash Staging
+https://staging-api.zyper.xyz
+```
+
+```bash Development
+http://localhost:3001
+```
+</CodeGroup>
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+Most endpoints are public, but administrative and user-specific endpoints require authentication.
+
+### API Key Authentication
+
+For server-to-server communication:
+
+```bash
+curl -H "X-API-Key: your_api_key" \
+  https://api.zyper.xyz/api/tokens/deploy
+```
+
+### Bearer Token Authentication
+
+For user-authenticated requests:
+
+```bash
+curl -H "Authorization: Bearer your_jwt_token" \
+  https://api.zyper.xyz/api/users/profile
+```
+
+## Rate Limiting
+
+API requests are rate limited to ensure fair usage:
+
+| Plan | Requests/Minute | Burst Limit |
+|------|----------------|-------------|
+| Public | 60 | 100 |
+| Authenticated | 300 | 500 |
+| Premium | 1000 | 2000 |
+
+Rate limit headers are included in all responses:
+
+```http
+X-RateLimit-Limit: 60
+X-RateLimit-Remaining: 45
+X-RateLimit-Reset: 1699564800
+```
+
+## Response Format
+
+All API responses follow a consistent format:
+
+### Success Response
 
 ```json
-"security": [
-  {
-    "bearerAuth": []
+{
+  "success": true,
+  "data": {
+    "tokenAddress": "0x123...",
+    "transactionHash": "0xabc...",
+    "timestamp": "2024-01-15T10:30:00Z"
+  },
+  "meta": {
+    "requestId": "req_abc123",
+    "timestamp": 1699564800
   }
-]
+}
 ```
+
+### Error Response
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "INVALID_PARAMETERS",
+    "message": "Token symbol must be 3-10 characters",
+    "details": {
+      "field": "symbol",
+      "value": "AB"
+    }
+  },
+  "meta": {
+    "requestId": "req_xyz789",
+    "timestamp": 1699564800
+  }
+}
+```
+
+## HTTP Status Codes
+
+| Code | Description |
+|------|-------------|
+| 200 | Success |
+| 201 | Created |
+| 400 | Bad Request |
+| 401 | Unauthorized |
+| 403 | Forbidden |
+| 404 | Not Found |
+| 429 | Too Many Requests |
+| 500 | Internal Server Error |
+| 503 | Service Unavailable |
+
+## Error Codes
+
+| Code | Description |
+|------|-------------|
+| `INVALID_PARAMETERS` | Request parameters are invalid |
+| `AUTHENTICATION_FAILED` | Authentication credentials invalid |
+| `INSUFFICIENT_BALANCE` | Wallet has insufficient balance |
+| `TOKEN_EXISTS` | Token with this symbol already exists |
+| `RATE_LIMIT_EXCEEDED` | Too many requests |
+| `DEPLOYMENT_FAILED` | Token deployment failed |
+| `INTERNAL_ERROR` | Server error occurred |
+
+## Pagination
+
+List endpoints support pagination:
+
+```bash
+GET /api/tokens?page=2&limit=50
+```
+
+Response includes pagination metadata:
+
+```json
+{
+  "data": [...],
+  "pagination": {
+    "page": 2,
+    "limit": 50,
+    "total": 1234,
+    "totalPages": 25,
+    "hasNext": true,
+    "hasPrev": true
+  }
+}
+```
+
+## Filtering & Sorting
+
+### Filtering
+
+```bash
+# Filter by creator
+GET /api/tokens?creator=0x123...
+
+# Filter by date range
+GET /api/tokens?from=2024-01-01&to=2024-01-31
+
+# Multiple filters
+GET /api/tokens?minVolume=1000&maxSupply=1000000000
+```
+
+### Sorting
+
+```bash
+# Sort by volume (descending)
+GET /api/tokens?sort=-volume
+
+# Sort by creation date (ascending)
+GET /api/tokens?sort=createdAt
+
+# Multiple sort fields
+GET /api/tokens?sort=-volume,createdAt
+```
+
+## Webhooks
+
+Register webhooks to receive real-time updates:
+
+```json
+POST /api/webhooks
+{
+  "url": "https://your-app.com/webhook",
+  "events": ["token.deployed", "fee.collected"],
+  "secret": "your_webhook_secret"
+}
+```
+
+### Webhook Events
+
+| Event | Description |
+|-------|-------------|
+| `token.deployed` | New token deployed |
+| `token.traded` | Token trade executed |
+| `fee.collected` | Fees collected for token |
+| `liquidity.added` | Liquidity added to pool |
+| `points.earned` | User earned points |
+
+### Webhook Payload
+
+```json
+{
+  "event": "token.deployed",
+  "timestamp": "2024-01-15T10:30:00Z",
+  "data": {
+    "tokenAddress": "0x123...",
+    "creator": "0xabc...",
+    "name": "MyToken",
+    "symbol": "MTK"
+  },
+  "signature": "sha256=abc123..."
+}
+```
+
+## API Endpoints
+
+### Core Endpoints
+
+<CardGroup cols={2}>
+  <Card title="Tokens" icon="coins" href="/api-reference/tokens/deploy">
+    Deploy and manage tokens
+  </Card>
+  <Card title="Trading" icon="chart-line" href="/api-reference/tokens/stats">
+    Trading data and statistics
+  </Card>
+  <Card title="Fees" icon="money-bill" href="/api-reference/tokens/fees">
+    Fee collection and earnings
+  </Card>
+  <Card title="Users" icon="users" href="/api-reference/users/points">
+    User profiles and points
+  </Card>
+</CardGroup>
+
+### System Endpoints
+
+<CardGroup cols={2}>
+  <Card title="Health" icon="heartbeat" href="/api-reference/system/health">
+    System health monitoring
+  </Card>
+  <Card title="Metrics" icon="chart-bar" href="/api-reference/system/metrics">
+    Performance metrics
+  </Card>
+</CardGroup>
+
+## SDK & Libraries
+
+Official SDKs for popular languages:
+
+<CodeGroup>
+```javascript JavaScript/TypeScript
+npm install @zyper/sdk
+```
+
+```python Python
+pip install zyper-sdk
+```
+
+```go Go
+go get github.com/zyperprotocol/zyper-go
+```
+
+```rust Rust
+[dependencies]
+zyper = "0.1.0"
+```
+</CodeGroup>
+
+### Quick Example
+
+<CodeGroup>
+```javascript JavaScript
+import { ZyperSDK } from '@zyper/sdk';
+
+const zyper = new ZyperSDK({
+  apiKey: 'your_api_key',
+  network: 'mainnet'
+});
+
+// Deploy a token
+const token = await zyper.deployToken({
+  name: 'MyToken',
+  symbol: 'MTK',
+  logo: 'https://example.com/logo.png'
+});
+
+console.log(`Token deployed at ${token.address}`);
+```
+
+```python Python
+from zyper import ZyperSDK
+
+zyper = ZyperSDK(
+    api_key='your_api_key',
+    network='mainnet'
+)
+
+# Deploy a token
+token = zyper.deploy_token(
+    name='MyToken',
+    symbol='MTK',
+    logo='https://example.com/logo.png'
+)
+
+print(f'Token deployed at {token.address}')
+```
+</CodeGroup>
+
+## Postman Collection
+
+Download our Postman collection for easy API testing:
+
+<Card title="Download Postman Collection" icon="download" href="https://api.zyper.xyz/postman">
+  Import into Postman to test all endpoints
+</Card>
+
+## GraphQL API (Beta)
+
+We also offer a GraphQL API for more flexible queries:
+
+```graphql
+query GetToken($address: String!) {
+  token(address: $address) {
+    name
+    symbol
+    totalSupply
+    creator {
+      address
+      earnings
+    }
+    pool {
+      liquidity
+      volume24h
+      fees24h
+    }
+  }
+}
+```
+
+<Note>
+  GraphQL API is currently in beta. Contact support for access.
+</Note>
+
+## Testing
+
+Use our testnet for development:
+
+```bash
+# Testnet Base URL
+https://testnet-api.zyper.xyz
+
+# Get test HYPE tokens
+curl -X POST https://faucet.zyper.xyz/request \
+  -H "Content-Type: application/json" \
+  -d '{"address": "0x..."}'
+```
+
+## Support
+
+<CardGroup cols={3}>
+  <Card title="Discord" icon="discord" href="https://discord.gg/zyper">
+    Get help from community
+  </Card>
+  <Card title="GitHub Issues" icon="github" href="https://github.com/zyperprotocol/zyper/issues">
+    Report bugs and issues
+  </Card>
+  <Card title="Email" icon="envelope" href="mailto:support@zyper.xyz">
+    Contact support team
+  </Card>
+</CardGroup>

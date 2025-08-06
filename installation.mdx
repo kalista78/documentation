@@ -1,0 +1,404 @@
+---
+title: "Installation"
+description: "Set up Zyper infrastructure for development or production"
+---
+
+## System Requirements
+
+<CardGroup cols={2}>
+  <Card title="Development" icon="laptop-code">
+    - Node.js v18+
+    - Redis server
+    - 8GB RAM minimum
+    - 20GB disk space
+  </Card>
+  <Card title="Production" icon="server">
+    - Node.js v18+
+    - Redis cluster
+    - 16GB+ RAM
+    - 50GB+ SSD storage
+  </Card>
+</CardGroup>
+
+## Quick Installation
+
+<Steps>
+  <Step title="Clone Repository">
+    ```bash
+    git clone https://github.com/zyperprotocol/zyper.git
+    cd zyper/zyperEVM/clanker-deployer
+    ```
+  </Step>
+  
+  <Step title="Install Dependencies">
+    ```bash
+    npm install
+    ```
+  </Step>
+  
+  <Step title="Configure Environment">
+    ```bash
+    cp config/example.env .env
+    # Edit .env with your configuration
+    ```
+  </Step>
+  
+  <Step title="Run Migrations">
+    ```bash
+    npm run apply-migrations
+    ```
+  </Step>
+  
+  <Step title="Start Services">
+    ```bash
+    npm run start:railway
+    ```
+  </Step>
+</Steps>
+
+## Detailed Setup
+
+### 1. Prerequisites
+
+<Tabs>
+  <Tab title="Node.js">
+    Install Node.js v18 or higher:
+    
+    ```bash
+    # Using nvm (recommended)
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+    nvm install 18
+    nvm use 18
+    
+    # Or using package manager
+    # Ubuntu/Debian
+    curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+    
+    # macOS
+    brew install node@18
+    ```
+  </Tab>
+  
+  <Tab title="Redis">
+    Install Redis server:
+    
+    ```bash
+    # Ubuntu/Debian
+    sudo apt-get update
+    sudo apt-get install redis-server
+    sudo systemctl enable redis-server
+    sudo systemctl start redis-server
+    
+    # macOS
+    brew install redis
+    brew services start redis
+    
+    # Docker
+    docker run -d -p 6379:6379 redis:alpine
+    ```
+  </Tab>
+  
+  <Tab title="PostgreSQL">
+    Zyper uses Supabase (managed PostgreSQL):
+    
+    1. Create account at [supabase.com](https://supabase.com)
+    2. Create new project
+    3. Get connection string from Settings > Database
+    4. Save credentials for .env file
+  </Tab>
+</Tabs>
+
+### 2. Smart Contract Deployment
+
+<Warning>
+  Smart contracts must be deployed before running the backend services
+</Warning>
+
+```bash
+cd zyperEVM
+
+# Install Foundry
+curl -L https://foundry.paradigm.xyz | bash
+foundryup
+
+# Deploy contracts
+forge script script/Deploy.s.sol --rpc-url $HYPEREVM_RPC_URL --broadcast
+
+# Save deployed addresses for configuration
+```
+
+### 3. Database Setup
+
+Run database migrations:
+
+```bash
+cd clanker-deployer
+
+# Create tables
+npm run apply-migrations
+
+# Verify migration
+npm run verify-db
+```
+
+### 4. Environment Configuration
+
+Create `.env` file with required variables:
+
+```env
+# HyperEVM Configuration
+HYPEREVM_RPC_URL=https://lb.drpc.org/ogrpc?network=hyperliquid&dkey=YOUR_KEY
+PRIVATE_KEY=0x...
+DEPLOYER_ADDRESS=0x...
+
+# Contract Addresses (from deployment)
+CLANKER_FACTORY_ADDRESS=0xaF3A89cD4cf3111f62Ff1402Df494dDE101DBFe5
+LP_LOCKER_ADDRESS=0x08B56768155ac1298f580bD961D07e91945b5285
+
+# Database
+SUPABASE_URL=https://xxx.supabase.co
+SUPABASE_SERVICE_KEY=eyJ...
+
+# Redis
+REDIS_URL=redis://localhost:6379
+
+# Social Media APIs
+TWITTER_BEARER_TOKEN=AAA...
+NEYNAR_API_KEY=NEYNAR_...
+APIFY_API_TOKEN=apify_api_...
+
+# AI Processing
+GEMINI_API_KEY=AIza...
+
+# Frontend URL
+FRONTEND_URL=http://localhost:3000
+
+# Optional: Monitoring
+GRAFANA_API_KEY=glsa_...
+SENTRY_DSN=https://...
+```
+
+### 5. Service Configuration
+
+Configure PM2 for process management:
+
+```javascript
+// ecosystem.config.js
+module.exports = {
+  apps: [
+    {
+      name: 'api-server',
+      script: './dist/services/ApiServer.js',
+      instances: 2,
+      exec_mode: 'cluster',
+      env: {
+        NODE_ENV: 'production',
+        PORT: 3001
+      }
+    },
+    {
+      name: 'orchestrator',
+      script: './dist/services/orchestrator/SimpleOrchestrator.js',
+      instances: 1,
+      env: {
+        NODE_ENV: 'production'
+      }
+    },
+    {
+      name: 'twitter-monitor',
+      script: './dist/services/TwitterMentionMonitor.js',
+      instances: 1,
+      env: {
+        NODE_ENV: 'production'
+      }
+    }
+  ]
+};
+```
+
+## Production Deployment
+
+### Railway Deployment
+
+<Steps>
+  <Step title="Install Railway CLI">
+    ```bash
+    npm install -g @railway/cli
+    railway login
+    ```
+  </Step>
+  
+  <Step title="Create Project">
+    ```bash
+    railway init
+    railway add
+    ```
+  </Step>
+  
+  <Step title="Configure Services">
+    ```bash
+    # Add Redis
+    railway add --plugin redis
+    
+    # Configure environment
+    railway variables set HYPEREVM_RPC_URL=...
+    ```
+  </Step>
+  
+  <Step title="Deploy">
+    ```bash
+    railway up
+    railway open
+    ```
+  </Step>
+</Steps>
+
+### Docker Deployment
+
+```dockerfile
+# Dockerfile
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci --only=production
+
+COPY . .
+RUN npm run build
+
+EXPOSE 3001
+CMD ["npm", "start"]
+```
+
+```yaml
+# docker-compose.yml
+version: '3.8'
+services:
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+  
+  api:
+    build: .
+    ports:
+      - "3001:3001"
+    environment:
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+```
+
+## Verification
+
+### Health Checks
+
+```bash
+# Check API server
+curl http://localhost:3001/health
+
+# Check orchestrator
+curl http://localhost:3001/api/orchestrator/status
+
+# Check Redis connection
+redis-cli ping
+```
+
+### Test Deployment
+
+```bash
+# Deploy test token
+npm run test:deploy
+
+# Monitor logs
+pm2 logs
+
+# Check metrics
+curl http://localhost:3001/api/metrics
+```
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Port Already in Use">
+    ```bash
+    # Find process using port
+    lsof -i :3001
+    
+    # Kill process
+    kill -9 <PID>
+    
+    # Or change port in .env
+    PORT=3002
+    ```
+  </Accordion>
+  
+  <Accordion title="Redis Connection Failed">
+    ```bash
+    # Check Redis status
+    redis-cli ping
+    
+    # Restart Redis
+    sudo systemctl restart redis
+    
+    # Check Redis logs
+    redis-cli monitor
+    ```
+  </Accordion>
+  
+  <Accordion title="Database Migration Failed">
+    ```bash
+    # Reset database
+    npm run reset-db
+    
+    # Run migrations manually
+    npm run migrate:up
+    
+    # Check migration status
+    npm run migrate:status
+    ```
+  </Accordion>
+  
+  <Accordion title="Contract Deployment Failed">
+    Ensure:
+    - Sufficient HYPE for gas
+    - Correct RPC URL
+    - Valid private key
+    - Network is accessible
+  </Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Configuration"
+    icon="gear"
+    href="/configuration"
+  >
+    Fine-tune your setup
+  </Card>
+  <Card
+    title="Development"
+    icon="code"
+    href="/development/setup"
+  >
+    Start building
+  </Card>
+  <Card
+    title="Monitoring"
+    icon="chart-line"
+    href="/development/monitoring"
+  >
+    Set up monitoring
+  </Card>
+  <Card
+    title="API Reference"
+    icon="book"
+    href="/api-reference/introduction"
+  >
+    Explore the API
+  </Card>
+</CardGroup>

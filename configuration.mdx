@@ -1,0 +1,456 @@
+---
+title: "Configuration"
+description: "Complete configuration guide for Zyper deployment system"
+---
+
+## Configuration Overview
+
+Zyper uses environment variables and configuration files to manage settings across different environments.
+
+<Info>
+  Configuration priority: Environment variables > .env file > Default values
+</Info>
+
+## Essential Configuration
+
+### Core Settings
+
+```env
+# Network Configuration
+CHAIN_ID=999
+CHAIN_NAME=HyperEVM
+HYPEREVM_RPC_URL=https://lb.drpc.org/ogrpc?network=hyperliquid&dkey=YOUR_KEY
+
+# Deployment Wallet
+PRIVATE_KEY=0x... # Main deployer wallet private key
+DEPLOYER_ADDRESS=0x... # Main deployer wallet address
+
+# Multi-wallet System (Optional but recommended for production)
+WALLET_1_PRIVATE_KEY=0x...
+WALLET_2_PRIVATE_KEY=0x...
+WALLET_3_PRIVATE_KEY=0x...
+WALLET_4_PRIVATE_KEY=0x...
+WALLET_5_PRIVATE_KEY=0x...
+```
+
+### Smart Contract Addresses
+
+```env
+# Core Contracts (Deploy these first)
+CLANKER_FACTORY_ADDRESS=0xaF3A89cD4cf3111f62Ff1402Df494dDE101DBFe5
+LP_LOCKER_ADDRESS=0x08B56768155ac1298f580bD961D07e91945b5285
+
+# Hyperswap V3 Contracts
+HYPERSWAP_V3_FACTORY=0xB1c0fa0B789320044A6F623cFe5eBda9562602E3
+POSITION_MANAGER=0x6eDA206207c09e5428F281761DdC0D300851fBC8
+SWAP_ROUTER=0x134dE8FaC35FB39208E7fF7cf0cC52062e7d5308
+
+# WHYPE Token
+WHYPE_ADDRESS=0x123... # Wrapped HYPE token address
+```
+
+### Database Configuration
+
+```env
+# Supabase PostgreSQL
+SUPABASE_URL=https://xxxxx.supabase.co
+SUPABASE_SERVICE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+# Redis Cache
+REDIS_URL=redis://localhost:6379
+REDIS_PASSWORD= # Optional for production
+REDIS_TLS=false # Set to true for TLS connections
+```
+
+## External Service APIs
+
+### Social Media Integration
+
+```env
+# Twitter API v2
+TWITTER_BEARER_TOKEN=AAAAAAAAAAAAAAAAAAAAAAxx...
+TWITTER_CONSUMER_KEY=xxx...
+TWITTER_CONSUMER_SECRET=xxx...
+TWITTER_ACCESS_TOKEN=xxx...
+TWITTER_ACCESS_TOKEN_SECRET=xxx...
+
+# Farcaster (Neynar)
+NEYNAR_API_KEY=NEYNAR_xxx...
+FARCASTER_HUB_URL=https://hub.farcaster.xyz
+
+# Web Scraping (Apify)
+APIFY_API_TOKEN=apify_api_xxx...
+```
+
+### AI Processing
+
+```env
+# Google Gemini AI
+GEMINI_API_KEY=AIzaSyxxx...
+GEMINI_MODEL=gemini-1.5-flash # or gemini-1.5-pro
+
+# OpenAI (Alternative)
+OPENAI_API_KEY=sk-xxx...
+OPENAI_MODEL=gpt-4
+```
+
+### Analytics & Monitoring
+
+```env
+# Goldsky Indexer
+GOLDSKY_API_KEY=xxx...
+GOLDSKY_WEBHOOK_SECRET=xxx...
+
+# ClickHouse Analytics
+CLICKHOUSE_URL=https://xxx.clickhouse.cloud
+CLICKHOUSE_USER=default
+CLICKHOUSE_PASSWORD=xxx...
+
+# Grafana
+GRAFANA_API_KEY=glsa_xxx...
+GRAFANA_URL=https://grafana.zyper.xyz
+
+# Sentry Error Tracking
+SENTRY_DSN=https://xxx@sentry.io/xxx
+SENTRY_ENVIRONMENT=production
+```
+
+## Application Settings
+
+### Server Configuration
+
+```env
+# API Server
+NODE_ENV=production # development | production
+PORT=3001
+API_BASE_URL=https://api.zyper.xyz
+FRONTEND_URL=https://zyper.xyz
+
+# CORS Settings
+CORS_ORIGINS=https://zyper.xyz,https://app.zyper.xyz
+CORS_CREDENTIALS=true
+
+# Rate Limiting
+RATE_LIMIT_WINDOW_MS=60000 # 1 minute
+RATE_LIMIT_MAX_REQUESTS=100
+```
+
+### Queue Configuration
+
+```env
+# BullMQ Settings
+QUEUE_CONCURRENCY=5
+QUEUE_MAX_JOBS=100
+QUEUE_RETRY_ATTEMPTS=3
+QUEUE_RETRY_DELAY=5000 # 5 seconds
+
+# Job Priorities
+DEPLOYMENT_PRIORITY=1
+FEE_COLLECTION_PRIORITY=2
+ANALYTICS_PRIORITY=3
+```
+
+### Security Settings
+
+```env
+# Authentication
+JWT_SECRET=xxx... # 32+ character random string
+JWT_EXPIRY=7d
+
+# API Keys
+API_KEY_HEADER=X-API-Key
+ADMIN_API_KEY=xxx...
+
+# Encryption
+ENCRYPTION_KEY=xxx... # 32 byte key for AES-256
+```
+
+## Feature Flags
+
+```env
+# Feature Toggles
+ENABLE_TWITTER_INTEGRATION=true
+ENABLE_FARCASTER_INTEGRATION=true
+ENABLE_AI_PROCESSING=true
+ENABLE_POINTS_SYSTEM=true
+ENABLE_REFERRALS=true
+ENABLE_FEE_COLLECTION=true
+
+# Deployment Settings
+MAX_DAILY_DEPLOYMENTS_PER_USER=10
+MIN_DEPLOYMENT_INTERVAL_SECONDS=60
+AUTO_FUND_WALLETS=true
+MIN_WALLET_BALANCE_HYPE=0.1
+```
+
+## Gas & Transaction Settings
+
+```env
+# Gas Configuration
+GAS_PRICE_MULTIPLIER=1.2 # 20% above base
+MAX_GAS_PRICE_GWEI=100
+MAX_PRIORITY_FEE_GWEI=2
+
+# Transaction Settings
+TX_CONFIRMATION_BLOCKS=2
+TX_TIMEOUT_SECONDS=120
+MAX_RETRY_ATTEMPTS=3
+
+# Big Block Support
+BIG_BLOCK_MODE=true
+BATCH_SIZE=10
+```
+
+## Logging Configuration
+
+```env
+# Log Levels
+LOG_LEVEL=info # debug | info | warn | error
+LOG_FORMAT=json # json | pretty
+
+# Log Destinations
+LOG_TO_FILE=true
+LOG_FILE_PATH=/var/log/zyper/app.log
+LOG_TO_CONSOLE=true
+LOG_TO_SENTRY=true
+
+# Log Rotation
+LOG_MAX_SIZE=100M
+LOG_MAX_FILES=10
+LOG_COMPRESS=true
+```
+
+## Development Settings
+
+```env
+# Development Only
+DEV_MODE=false
+DEBUG=zyper:*
+MOCK_DEPLOYMENTS=false
+SKIP_WALLET_CHECKS=false
+DISABLE_RATE_LIMITS=false
+```
+
+## Configuration Files
+
+### ecosystem.config.js (PM2)
+
+```javascript
+module.exports = {
+  apps: [
+    {
+      name: 'zyper-api',
+      script: './dist/services/ApiServer.js',
+      instances: 'max',
+      exec_mode: 'cluster',
+      max_memory_restart: '1G',
+      error_file: './logs/err.log',
+      out_file: './logs/out.log',
+      log_file: './logs/combined.log',
+      time: true,
+      env: {
+        NODE_ENV: 'production',
+        PORT: 3001
+      }
+    },
+    {
+      name: 'zyper-orchestrator',
+      script: './dist/services/orchestrator/SimpleOrchestrator.js',
+      instances: 1,
+      max_memory_restart: '2G',
+      cron_restart: '0 */6 * * *', // Restart every 6 hours
+      env: {
+        NODE_ENV: 'production'
+      }
+    }
+  ]
+};
+```
+
+### config.json (Application Config)
+
+```json
+{
+  "deployment": {
+    "initialFDV": 500,
+    "tokenSupply": 1000000000,
+    "liquidityPercent": 100,
+    "swapFeePercent": 1,
+    "creatorFeePercent": 50,
+    "protocolFeePercent": 50
+  },
+  "limits": {
+    "maxTokenNameLength": 50,
+    "maxSymbolLength": 10,
+    "maxDescriptionLength": 500,
+    "maxImageSize": 5242880,
+    "allowedImageFormats": ["png", "jpg", "jpeg", "gif", "svg"]
+  },
+  "social": {
+    "twitterPollInterval": 60000,
+    "farcasterPollInterval": 30000,
+    "mentionCooldown": 300000
+  }
+}
+```
+
+## Environment-Specific Configurations
+
+<Tabs>
+  <Tab title="Development">
+    ```env
+    # .env.development
+    NODE_ENV=development
+    LOG_LEVEL=debug
+    MOCK_DEPLOYMENTS=true
+    DISABLE_RATE_LIMITS=true
+    HYPEREVM_RPC_URL=http://localhost:8545
+    REDIS_URL=redis://localhost:6379
+    ```
+  </Tab>
+  
+  <Tab title="Staging">
+    ```env
+    # .env.staging
+    NODE_ENV=staging
+    LOG_LEVEL=info
+    ENABLE_TWITTER_INTEGRATION=true
+    RATE_LIMIT_MAX_REQUESTS=50
+    HYPEREVM_RPC_URL=https://testnet.hyperevm.io
+    ```
+  </Tab>
+  
+  <Tab title="Production">
+    ```env
+    # .env.production
+    NODE_ENV=production
+    LOG_LEVEL=warn
+    ENABLE_ALL_FEATURES=true
+    RATE_LIMIT_MAX_REQUESTS=100
+    AUTO_FUND_WALLETS=true
+    ```
+  </Tab>
+</Tabs>
+
+## Validation & Testing
+
+### Configuration Validator
+
+```bash
+# Validate configuration
+npm run validate:config
+
+# Check required variables
+npm run check:env
+
+# Test connections
+npm run test:connections
+```
+
+### Health Check Endpoints
+
+```bash
+# Check all services
+curl http://localhost:3001/health/all
+
+# Individual checks
+curl http://localhost:3001/health/database
+curl http://localhost:3001/health/redis
+curl http://localhost:3001/health/blockchain
+```
+
+## Security Best Practices
+
+<Warning>
+  Never commit sensitive configuration to version control!
+</Warning>
+
+<Steps>
+  <Step title="Use Environment Variables">
+    Store all sensitive data in environment variables, not in code
+  </Step>
+  
+  <Step title="Rotate Keys Regularly">
+    Implement key rotation for API keys and secrets
+  </Step>
+  
+  <Step title="Encrypt Sensitive Data">
+    Use encryption for stored credentials and wallet keys
+  </Step>
+  
+  <Step title="Audit Access">
+    Regularly audit who has access to production configuration
+  </Step>
+  
+  <Step title="Use Secrets Management">
+    Consider using AWS Secrets Manager, HashiCorp Vault, or similar
+  </Step>
+</Steps>
+
+## Troubleshooting Configuration
+
+<AccordionGroup>
+  <Accordion title="Missing Environment Variables">
+    ```bash
+    # List all required variables
+    npm run env:required
+    
+    # Generate template
+    npm run env:template > .env.example
+    ```
+  </Accordion>
+  
+  <Accordion title="Invalid Configuration">
+    ```bash
+    # Validate all settings
+    npm run validate:all
+    
+    # Check specific service
+    npm run validate:twitter
+    npm run validate:database
+    ```
+  </Accordion>
+  
+  <Accordion title="Connection Issues">
+    ```bash
+    # Test individual connections
+    npm run test:redis
+    npm run test:database
+    npm run test:blockchain
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Development Setup"
+    icon="code"
+    href="/development/setup"
+  >
+    Start local development
+  </Card>
+  <Card
+    title="Deployment"
+    icon="rocket"
+    href="/development/deployment"
+  >
+    Deploy to production
+  </Card>
+  <Card
+    title="Monitoring"
+    icon="chart-line"
+    href="/development/monitoring"
+  >
+    Set up monitoring
+  </Card>
+  <Card
+    title="API Reference"
+    icon="book"
+    href="/api-reference/introduction"
+  >
+    Explore the API
+  </Card>
+</CardGroup>
