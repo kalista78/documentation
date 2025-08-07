@@ -17,8 +17,7 @@
             "group": "Welcome",
             "pages": [
               "index",
-              "quickstart",
-              "how-it-works"
+              "quickstart"
             ]
           },
           {
@@ -34,10 +33,8 @@
             "group": "Make Money",
             "pages": [
               "earn/creator-fees",
-              "earn/trading-fees",
               "earn/points-system",
-              "earn/referrals",
-              "earn/leaderboard"
+              "earn/referrals"
             ]
           }
         ]
@@ -48,40 +45,19 @@
           {
             "group": "Trading Basics",
             "pages": [
-              "trading/getting-started",
-              "trading/hyperswap",
-              "trading/liquidity",
-              "trading/fees"
-            ]
-          },
-          {
-            "group": "Strategies",
-            "pages": [
-              "strategies/early-bird",
-              "strategies/volume-trading",
-              "strategies/token-sniping",
-              "strategies/risk-management"
+              "trading/getting-started"
             ]
           }
         ]
       },
       {
-        "tab": "Community",
+        "tab": "Resources",
         "groups": [
           {
-            "group": "Join Us",
-            "pages": [
-              "community/twitter",
-              "community/telegram"
-            ]
-          },
-          {
-            "group": "Resources",
+            "group": "Help & Support",
             "pages": [
               "resources/faq",
-              "resources/glossary",
-              "resources/tutorials",
-              "resources/support"
+              "legal/terms-of-service"
             ]
           }
         ]

@@ -1,0 +1,240 @@
+---
+title: "Twitter Bot"
+description: "Launch tokens with a simple tweet to @zyperbot"
+---
+
+## Launch Tokens via Twitter
+
+Create and deploy tokens instantly by tweeting @zyperbot. No coding, no gas fees, just tweet and earn!
+
+<Info>
+  **Speed**: Your token deploys in under 60 seconds after tweeting
+</Info>
+
+## How It Works
+
+<Steps>
+  <Step title="Follow @zyperbot">
+    Make sure you're following [@zyperbot](https://twitter.com/zyperbot) on Twitter
+  </Step>
+  
+  <Step title="Compose Your Tweet">
+    Tweet @zyperbot with your token details using our simple format
+  </Step>
+  
+  <Step title="Wait for Confirmation">
+    Zyperbot replies within 30 seconds with your token address and links
+  </Step>
+  
+  <Step title="Start Earning">
+    Your token is live! Share it and earn 0.5% from every trade
+  </Step>
+</Steps>
+
+## Tweet Format
+
+### Basic Launch
+```
+@zyperbot launch "Token Name" $SYMBOL
+```
+
+### With Logo
+```
+@zyperbot launch "Token Name" $SYMBOL
+logo: https://your-image-url.com/logo.png
+```
+
+### Full Details
+```
+@zyperbot launch "Token Name" $SYMBOL
+logo: https://your-image-url.com/logo.png
+website: yourtoken.com
+telegram: t.me/yourgroup
+description: Your token description here
+```
+
+## Real Examples
+
+<Tabs>
+  <Tab title="Simple Launch">
+    ```
+    @zyperbot launch "Moon Rocket" $MOON
+    ```
+  </Tab>
+  
+  <Tab title="With Logo">
+    ```
+    @zyperbot launch "Diamond Hands" $DIAMOND
+    logo: https://i.imgur.com/abc123.png
+    ```
+  </Tab>
+  
+  <Tab title="Full Launch">
+    ```
+    @zyperbot launch "Degen Club" $DEGEN
+    logo: https://i.imgur.com/xyz789.png
+    website: degenclub.xyz
+    telegram: t.me/degenclub
+    description: The most exclusive degen community on HyperEVM 🚀
+    ```
+  </Tab>
+</Tabs>
+
+## What Zyperbot Returns
+
+When successful, @zyperbot replies with:
+
+```
+✅ $SYMBOL launched successfully!
+
+📊 Token: 0x123...abc
+💹 Trade: hyperswap.xyz/swap?token=0x123...abc
+📈 Chart: zyper.fun/token/0x123...abc
+💰 Dashboard: zyper.fun/dashboard
+
+Initial liquidity: 500 HYPE (locked forever)
+Creator fee: 0.5% of all trades
+```
+
+## Supported Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|----------|-------------|---------|
+| **name** | ✅ Yes | Token name | "Moon Rocket" |
+| **symbol** | ✅ Yes | Token symbol (3-10 chars) | $MOON |
+| **logo** | ❌ No | Image URL | https://i.imgur.com/logo.png |
+| **website** | ❌ No | Project website | moonrocket.xyz |
+| **telegram** | ❌ No | Telegram group | t.me/moonrocket |
+| **description** | ❌ No | Token description | "To the moon!" |
+
+## Image Hosting Tips
+
+For logos, you can use:
+- **Imgur**: Upload to imgur.com and copy direct link
+- **IPFS**: Decentralized storage via Pinata or similar
+- **Direct URLs**: Any publicly accessible image URL
+- **Twitter**: Upload image in your tweet (bot will extract it)
+
+<Warning>
+  Image must be publicly accessible. Private or authenticated URLs won't work.
+</Warning>
+
+## Daily Limits
+
+<Note>
+  You can create up to **2 tokens via Twitter every 24 hours**
+</Note>
+
+The limit resets at midnight UTC. Plan your launches accordingly!
+
+## Pro Tips
+
+<AccordionGroup>
+  <Accordion title="🎯 Maximize Visibility">
+    - Tweet during peak hours (6-10 PM EST)
+    - Use trending hashtags related to crypto
+    - Add eye-catching emojis
+    - Reply to your own tweet with more info
+  </Accordion>
+  
+  <Accordion title="📸 Logo Best Practices">
+    - Square images work best (1:1 ratio)
+    - Minimum 400x400px recommended
+    - PNG with transparency preferred
+    - Keep file size under 2MB
+  </Accordion>
+  
+  <Accordion title="🚀 Launch Strategy">
+    - Have your Telegram group ready before launch
+    - Prepare marketing tweets in advance
+    - Coordinate with friends to trade early
+    - Share in relevant Twitter Spaces
+  </Accordion>
+  
+  <Accordion title="💬 Engagement Tips">
+    - Reply to Zyperbot's confirmation with excitement
+    - Quote tweet with additional context
+    - Pin the launch tweet to your profile
+    - Share in crypto Twitter communities
+  </Accordion>
+</AccordionGroup>
+
+## Common Issues
+
+<AccordionGroup>
+  <Accordion title="Bot didn't respond">
+    - Make sure you're following @zyperbot
+    - Check your tweet format is correct
+    - Ensure you haven't hit the 2 token daily limit
+    - Try again in a few minutes
+  </Accordion>
+  
+  <Accordion title="Invalid symbol error">
+    - Symbol must be 3-10 characters
+    - Use only letters and numbers
+    - Don't include special characters (except $)
+    - Check if symbol is already taken
+  </Accordion>
+  
+  <Accordion title="Logo not showing">
+    - Ensure URL is publicly accessible
+    - Use direct image link (ends in .png, .jpg, etc)
+    - Try re-hosting on Imgur
+    - Image might be too large (keep under 2MB)
+  </Accordion>
+</AccordionGroup>
+
+## After Launch
+
+Once your token is live:
+
+1. **Share the launch tweet** everywhere
+2. **Check your dashboard** at zyper.fun
+3. **Monitor trading volume** for fee accumulation
+4. **Engage with traders** who reply to your tweet
+5. **Build momentum** with follow-up tweets
+
+## Integration with Privy
+
+When you launch via Twitter, you can later:
+- Sign in to zyper.fun with your Twitter account via Privy
+- Claim and manage all tokens launched from your Twitter
+- Update fee recipient addresses
+- Track performance across all your tokens
+
+## Examples of Successful Launches
+
+### High-Volume Launch
+```
+@zyperbot launch "HYPE Maximalist" $HYPEMAXI
+logo: https://i.imgur.com/hypemaxi.png
+telegram: t.me/hypemaxi
+description: For those who believe in the HYPE ecosystem 🚀
+```
+*Result: 1M HYPE volume in first 24 hours*
+
+### Community Token
+```
+@zyperbot launch "Zyper Degens" $ZDEGEN
+logo: https://i.imgur.com/zdegen.png
+website: zyperdegen.xyz
+description: Official degen community of Zyper traders 💎
+```
+*Result: 500+ holders in first week*
+
+## Ready to Tweet?
+
+<Card title="Launch on Twitter" icon="x-twitter" href="https://twitter.com/zyperbot">
+  Tweet @zyperbot now and launch your token in 60 seconds!
+</Card>
+
+## Need Help?
+
+<CardGroup cols={2}>
+  <Card title="FAQ" icon="question" href="/resources/faq">
+    Common questions answered
+  </Card>
+  <Card title="Telegram Support" icon="telegram" href="https://t.me/zyperhub">
+    Get help from the community
+  </Card>
+</CardGroup>
