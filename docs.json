@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "Zyper",
   "colors": {
-    "primary": "#7B61FF",
-    "light": "#9B81FF",
-    "dark": "#5B41DF"
+    "primary": "#00D26A",
+    "light": "#33DA85",
+    "dark": "#00B355"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -67,7 +67,7 @@
       "anchors": [
         {
           "anchor": "Launch App",
-          "href": "https://zyper.xyz",
+          "href": "https://zyper.fun",
           "icon": "rocket"
         },
         {
@@ -78,7 +78,7 @@
         {
           "anchor": "Farcaster",
           "href": "http://farcaster.xyz/zyperbot",
-          "icon": "message"
+          "icon": "users"
         }
       ]
     }
