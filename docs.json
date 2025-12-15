@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Zyper",
+  "name": "Slinq",
   "colors": {
     "primary": "#00D26A",
     "light": "#33DA85",
@@ -67,17 +67,17 @@
       "anchors": [
         {
           "anchor": "Launch App",
-          "href": "https://zyper.fun",
+          "href": "https://slinq.xyz",
           "icon": "rocket"
         },
         {
           "anchor": "Twitter",
-          "href": "https://x.com/Zyperbot",
+          "href": "https://x.com/sabormarket",
           "icon": "x-twitter"
         },
         {
           "anchor": "Farcaster",
-          "href": "http://farcaster.xyz/zyperbot",
+          "href": "https://warpcast.com/slinq",
           "icon": "users"
         }
       ]
@@ -91,13 +91,13 @@
     "links": [
       {
         "label": "Support",
-        "href": "https://t.me/zyperhub"
+        "href": "https://t.me/sabormarket"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Launch App",
-      "href": "https://zyper.fun"
+      "href": "https://slinq.xyz"
     }
   },
   "contextual": {
@@ -108,8 +108,8 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/Zyperbot",
-      "telegram": "https://t.me/zyperhub"
+      "x": "https://x.com/sabormarket",
+      "telegram": "https://t.me/sabormarket"
     }
   }
 }
