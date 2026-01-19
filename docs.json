@@ -36,6 +36,12 @@
               "earn/points-system",
               "earn/referrals"
             ]
+          },
+          {
+            "group": "$SLINQ Token",
+            "pages": [
+              "token/tokenomics"
+            ]
           }
         ]
       },

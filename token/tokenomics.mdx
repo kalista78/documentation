@@ -1,0 +1,223 @@
+---
+title: "$SLINQ Tokenomics"
+description: "Complete breakdown of SLINQ token economics, distribution, and staking mechanics"
+---
+
+## 💎 The SLINQ Token
+
+SLINQ is the native utility token powering the Slinq ecosystem - the memecoin launchpad that shares 40% of trading fees with creators.
+
+<CardGroup cols={3}>
+  <Card title="Token Name" icon="tag">
+    **SLINQ**
+  </Card>
+  <Card title="Network" icon="link">
+    **BNB Smart Chain**
+  </Card>
+  <Card title="Total Supply" icon="coins">
+    **1,000,000,000**
+  </Card>
+</CardGroup>
+
+---
+
+## 📊 Supply Distribution
+
+The SLINQ token distribution is designed to maximize community ownership while ensuring sustainable growth.
+
+<div style={{ background: 'linear-gradient(135deg, rgba(0, 210, 106, 0.1) 0%, rgba(0, 217, 255, 0.1) 100%)', borderRadius: '16px', padding: '24px', marginBottom: '24px' }}>
+
+| Allocation | Percentage | Tokens | Purpose |
+|------------|------------|--------|---------|
+| **Fair Launch** | 55% | 550,000,000 | Bonding curve sale - available to everyone |
+| **Seasons** | 30% | 300,000,000 | Community rewards & staking incentives |
+| **Team** | 10% | 100,000,000 | Core team (vested over 12 months) |
+| **Creator Migration** | 5% | 50,000,000 | Rewards for creators migrating to Slinq |
+
+</div>
+
+<CardGroup cols={2}>
+  <Card title="55% Fair Launch" icon="rocket" color="#00D26A">
+    Majority of supply distributed through bonding curve - no presale, no VCs, just fair access for everyone.
+  </Card>
+  <Card title="30% Seasons" icon="trophy" color="#FFD700">
+    Reserved for seasonal rewards, staking emissions, and community incentives over multiple seasons.
+  </Card>
+  <Card title="10% Team" icon="users" color="#00D9FF">
+    Team allocation with 12-month linear vesting to ensure long-term alignment with the project.
+  </Card>
+  <Card title="5% Creator Migration" icon="gift" color="#FF6B6B">
+    Exclusive rewards for creators who migrate their communities from other platforms to Slinq.
+  </Card>
+</CardGroup>
+
+---
+
+## 🎁 Creator Migration Program
+
+<Info>
+**Not a vampire attack** - This is a welcome bonus for creators building on Slinq!
+</Info>
+
+We've reserved 5% of the total supply (50M SLINQ) specifically to reward creators who migrate from other launchpads like four.meme to Slinq.
+
+### Why Migrate?
+
+<CardGroup cols={2}>
+  <Card title="40% Fee Share" icon="money-bill-wave" color="#00D26A">
+    Slinq shares 40% of all trading fees with creators - four.meme shares 0%.
+  </Card>
+  <Card title="Migration Bonus" icon="gift" color="#FFD700">
+    Earn bonus SLINQ tokens when you launch your next token on Slinq.
+  </Card>
+</CardGroup>
+
+### How It Works
+
+<Steps>
+  <Step title="Verify Your four.meme History">
+    Connect your wallet to verify you've launched tokens on four.meme
+  </Step>
+  <Step title="Launch on Slinq">
+    Create your next memecoin on Slinq using our launchpad
+  </Step>
+  <Step title="Claim Migration Rewards">
+    Receive bonus SLINQ tokens based on your historical launch performance
+  </Step>
+</Steps>
+
+---
+
+## 🔒 Staking & esSLINQ
+
+Stake your SLINQ tokens to earn **esSLINQ** (escrowed SLINQ) and additional rewards.
+
+<CardGroup cols={3}>
+  <Card title="Stake SLINQ" icon="lock" color="#00D26A">
+    Lock your tokens to start earning rewards immediately
+  </Card>
+  <Card title="Earn esSLINQ" icon="gem" color="#00D9FF">
+    Receive non-transferable esSLINQ as staking rewards
+  </Card>
+  <Card title="Convert to SLINQ" icon="rotate" color="#FFD700">
+    Vest or instant-claim your esSLINQ for SLINQ
+  </Card>
+</CardGroup>
+
+### What is esSLINQ?
+
+esSLINQ (escrowed SLINQ) is a **non-transferable** reward token that can be converted to SLINQ through:
+
+<Tabs>
+  <Tab title="21-Day Vesting">
+    **Full Value Path** - Get 100% of your esSLINQ as SLINQ
+
+    - Lock esSLINQ for 21 days
+    - Claim SLINQ linearly as it vests
+    - No penalties - receive the full amount
+    - Best for long-term holders
+
+    ```
+    100 esSLINQ → 21 days → 100 SLINQ
+    ```
+  </Tab>
+  <Tab title="Instant Claim">
+    **Quick Access** - Get 45% immediately
+
+    - Claim esSLINQ instantly at 45% rate
+    - 55% penalty is applied
+    - Penalty split: 50% burned, 50% recycled to staking rewards
+    - Best for immediate liquidity needs
+
+    ```
+    100 esSLINQ → Instant → 45 SLINQ
+                          → 27.5 Burned
+                          → 27.5 Back to Stakers
+    ```
+  </Tab>
+</Tabs>
+
+### Staking Economics
+
+<AccordionGroup>
+  <Accordion title="How are rewards distributed?" icon="chart-line">
+    Rewards stream linearly over 24-hour periods. The longer you stake, the more you earn relative to others. When new rewards are deposited, they combine with remaining rewards and redistribute over a fresh 24-hour window.
+  </Accordion>
+  <Accordion title="What's the penalty recycling mechanism?" icon="recycle">
+    When users instant-claim esSLINQ at 45%, the 55% penalty is split:
+    - **50% burned** - reducing total supply permanently
+    - **50% recycled** - sent back to the staking pool as additional rewards
+
+    This creates a sustainable reward flywheel where impatient users boost rewards for patient stakers.
+  </Accordion>
+  <Accordion title="Can I cancel vesting early?" icon="xmark">
+    Yes! You can cancel a vesting position at any time:
+    - Claim any SLINQ already vested
+    - Receive unvested esSLINQ back to your wallet
+    - Start a new vesting position or instant-claim the returned esSLINQ
+  </Accordion>
+  <Accordion title="How many vesting positions can I have?" icon="list">
+    You can have up to **30 active vesting positions** at once. Completed positions can be cleaned up to free slots and receive a gas refund.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## 🔥 Buyback & Burn
+
+A portion of protocol fees are used to **buy back SLINQ** from the market and **permanently burn** it.
+
+<div style={{ background: 'linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(255, 215, 0, 0.1) 100%)', borderRadius: '16px', padding: '24px', marginBottom: '24px' }}>
+
+| Source | Action | Impact |
+|--------|--------|--------|
+| Trading Fees (Protocol Share) | Buyback SLINQ via PancakeSwap | Reduces circulating supply |
+| Instant Claim Penalties | 50% burned directly | Reduces total supply |
+| Deflationary Pressure | Continuous burns | Increasing scarcity |
+
+</div>
+
+---
+
+## 🛡️ Token Security
+
+<CardGroup cols={2}>
+  <Card title="Non-Transferable esSLINQ" icon="shield" color="#00D26A">
+    esSLINQ cannot be traded on secondary markets - it can only be earned through staking and converted to SLINQ.
+  </Card>
+  <Card title="Vested Team Tokens" icon="clock" color="#00D9FF">
+    Team allocation is subject to 12-month linear vesting, ensuring long-term commitment.
+  </Card>
+</CardGroup>
+
+---
+
+## 📈 Token Utility
+
+<CardGroup cols={2}>
+  <Card title="Staking Rewards" icon="coins" color="#00D26A">
+    Stake SLINQ to earn esSLINQ rewards and boost your earnings
+  </Card>
+  <Card title="Governance" icon="gavel" color="#00D9FF">
+    Future governance rights for protocol decisions
+  </Card>
+  <Card title="Fee Discounts" icon="percent" color="#FFD700">
+    Hold SLINQ for reduced platform fees
+  </Card>
+  <Card title="Exclusive Access" icon="star" color="#FF6B6B">
+    Early access to new features and launches
+  </Card>
+</CardGroup>
+
+---
+
+## 🚀 Get Started
+
+<CardGroup cols={2}>
+  <Card title="Stake SLINQ" icon="lock" href="https://slinq.meme/stake" color="#00D26A">
+    Start earning esSLINQ rewards today
+  </Card>
+  <Card title="Launch a Token" icon="rocket" href="/create/launch-token" color="#00D9FF">
+    Create your memecoin and earn 40% of fees
+  </Card>
+</CardGroup>
