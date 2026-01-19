@@ -8,91 +8,95 @@
     "dark": "#00B355"
   },
   "favicon": "/favicon.svg",
-  "navigation": {
-    "tabs": [
-      {
-        "tab": "Getting Started",
-        "groups": [
-          {
-            "group": "Welcome",
-            "pages": [
-              "index",
-              "quickstart"
-            ]
-          },
-          {
-            "group": "Create & Earn",
-            "pages": [
-              "create/launch-token",
-              "create/twitter-bot",
-              "create/farcaster-bot",
-              "create/web-app"
-            ]
-          },
-          {
-            "group": "Make Money",
-            "pages": [
-              "earn/creator-fees",
-              "earn/points-system",
-              "earn/referrals"
-            ]
-          },
-          {
-            "group": "$SLINQ Token",
-            "pages": [
-              "token/tokenomics"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Token Trading",
-        "groups": [
-          {
-            "group": "Trading Basics",
-            "pages": [
-              "trading/getting-started"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Resources",
-        "groups": [
-          {
-            "group": "Help & Support",
-            "pages": [
-              "resources/faq",
-              "legal/terms-of-service"
-            ]
-          }
-        ]
-      }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Launch App",
-          "href": "https://slinq.meme",
-          "icon": "rocket"
-        },
-        {
-          "anchor": "Twitter",
-          "href": "https://x.com/sabormarket",
-          "icon": "x-twitter"
-        },
-        {
-          "anchor": "Farcaster",
-          "href": "https://warpcast.com/slinq",
-          "icon": "users"
-        }
-      ]
-    }
-  },
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
+  "tabs": [
+    {
+      "tab": "Getting Started",
+      "groups": [
+        "Welcome",
+        "Create & Earn",
+        "Make Money",
+        "$SLINQ Token"
+      ]
+    },
+    {
+      "tab": "Token Trading",
+      "groups": [
+        "Trading Basics"
+      ]
+    },
+    {
+      "tab": "Resources",
+      "groups": [
+        "Help & Support"
+      ]
+    }
+  ],
+  "anchors": [
+    {
+      "anchor": "Launch App",
+      "href": "https://slinq.meme",
+      "icon": "rocket"
+    },
+    {
+      "anchor": "Twitter",
+      "href": "https://x.com/sabormarket",
+      "icon": "x-twitter"
+    },
+    {
+      "anchor": "Farcaster",
+      "href": "https://warpcast.com/slinq",
+      "icon": "users"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Welcome",
+      "pages": [
+        "index",
+        "quickstart"
+      ]
+    },
+    {
+      "group": "Create & Earn",
+      "pages": [
+        "create/launch-token",
+        "create/twitter-bot",
+        "create/farcaster-bot",
+        "create/web-app"
+      ]
+    },
+    {
+      "group": "Make Money",
+      "pages": [
+        "earn/creator-fees",
+        "earn/points-system",
+        "earn/referrals"
+      ]
+    },
+    {
+      "group": "$SLINQ Token",
+      "pages": [
+        "token/tokenomics"
+      ]
+    },
+    {
+      "group": "Trading Basics",
+      "pages": [
+        "trading/getting-started"
+      ]
+    },
+    {
+      "group": "Help & Support",
+      "pages": [
+        "resources/faq",
+        "legal/terms-of-service"
+      ]
+    }
+  ],
   "navbar": {
     "links": [
       {
